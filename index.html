@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flags</title>
+</head>
+
+<body>
+    <script>
+        var board = document.createElement("div");
+        board.style.width = "1030";
+        board.style.flexDirection = "row"
+        board.style.display = "flex"
+        board.style.flexWrap = "wrap"
+        
+       
+        
+
+
+        fetch("https://restcountries.com/v3.1/all")
+            .then(function (data) {
+                return data.json();
+            })
+            .then(function (dataObj) {
+                console.log(dataObj)
+                
+
+                dataObj.forEach(function (element) {
+                    console.log(element.car.signs[0])
+                    var box = document.createElement('div')
+
+                    box.style.width = "200px";
+                    box.style.height = "200px"
+                    box.style.display = "flex"
+                    box.style.flexDirection = "column";
+                    box.style.marginRight = "20px"
+                    box.style.marginBottom= "30px"
+                    box.style.border='1px solid black'
+                    board.appendChild(box)
+
+                    var box1 = document.createElement("img");
+                    box1.setAttribute('src', element.flags.png);
+                    box1.setAttribute('alt', "image")
+                    box1.style.width="199px"
+                    box1.style.height="100px"
+                    box.style.marginTop="10px"
+                    box1.style.border=("1px solid black")
+                    box.appendChild(box1)
+
+                   var box2=document.createElement("div")
+                    box2.style.width = "199px"
+                    box2.style.height = "50x"
+                    box2.style.marginTop="10px"
+                    box2.innerText=element.name.common;
+
+                    box.appendChild(box2)
+
+                    var box3=document.createElement("div")
+                    box3.style.width = "199px"
+                    box3.style.height = "50x"
+                    box3.style.marginTop="10px"
+                    box3.innerText=element.car.signs[0];
+
+                    box.appendChild(box3)
+
+                })
+
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+        document.body.appendChild(board);
+        
+    </script>
+</body>
+
+</html>
